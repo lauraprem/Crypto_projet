@@ -15,14 +15,14 @@ public class Main {
             Alice alice = new Alice();
             Bob bob = new Bob();
 
-            //Bob donne l'encryption du numéro de question choisi
+            //Bob donne l'encryption du numÃ©ro de question choisi
             BigInteger I = bob.getI();
 
-            //Alice génère un masque pour chaque question et masque la question adéquate
+            //Alice gÃ©nÃ¨re un masque pour chaque question et masque la question adÃ©quate
             // Alice."genere masque et masque valeurs";
 
 
-            //Alice donne la liste des réponses masquées et encryptées
+            //Alice donne la liste des rÃ©ponses masquÃ©es et encryptÃ©es
            // bob.setReponsesEncryptees(Alice."generer reponses Masquees et Encryptees()");
 
             //Bob decrypte les reponses

@@ -196,7 +196,7 @@ public class Paillier
         return r;
     }
 
-    // return public key as the vector <n, g>
+    // return 21
     public Vector publicKey()
     {
         Vector pubKey = new Vector();
