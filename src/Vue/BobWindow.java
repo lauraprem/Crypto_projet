@@ -35,6 +35,16 @@ public class BobWindow extends JFrame {
     @SuppressWarnings("unchecked")
     private void initComponents() {
 
+        // Obtenir la résolution de l'écran
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
+
+        // Centrer la fenêtre dans l'écran
+        setSize(screenWidth / 2, screenHeight / 2);
+        setLocation(screenWidth / 4, screenHeight / 4);
+
         jPanelBob = new JPanel();
         jComboBoxQuest = new JComboBox<>();
         jLabelConsignes = new JLabel();

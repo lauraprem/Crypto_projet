@@ -1,6 +1,11 @@
 package Vue;
 
+import Utils.BigIntegerUtils;
+import Vue.Utils.Questions;
+
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 import java.math.BigInteger;
 
 /**
@@ -64,6 +69,18 @@ public class AliceWindow extends JFrame {
         @SuppressWarnings("unchecked")
         private void initComponents() {
 
+            // Obtenir la résolution de l'écran
+            Toolkit kit = Toolkit.getDefaultToolkit();
+            Dimension screenSize = kit.getScreenSize();
+            int screenHeight = screenSize.height;
+            int screenWidth = screenSize.width;
+
+            // Centrer la fenêtre dans l'écran
+            setSize(screenWidth / 2, screenHeight / 2);
+            setLocation(screenWidth / 4, screenHeight / 8);
+
+            String[] questions = Questions.getQuestions();
+
             jPanelAlice = new JPanel();
             jLabelConsignes1 = new JLabel();
             jLabel3 = new JLabel();
@@ -83,16 +100,16 @@ public class AliceWindow extends JFrame {
             jTextArea8 = new JTextArea();
             jScrollPane9 = new JScrollPane();
             jTextArea9 = new JTextArea();
-            jLabel1 = new JLabel();
-            jLabel2 = new JLabel();
-            jLabel4 = new JLabel();
-            jLabel5 = new JLabel();
-            jLabel6 = new JLabel();
-            jLabel7 = new JLabel();
-            jLabel8 = new JLabel();
-            jLabel9 = new JLabel();
-            jLabel10 = new JLabel();
-            jLabel11 = new JLabel();
+            jLabel1 = new JLabel(questions[0]);
+            jLabel2 = new JLabel(questions[1]);
+            jLabel4 = new JLabel(questions[2]);
+            jLabel5 = new JLabel(questions[3]);
+            jLabel6 = new JLabel(questions[4]);
+            jLabel7 = new JLabel(questions[5]);
+            jLabel8 = new JLabel(questions[6]);
+            jLabel9 = new JLabel(questions[7]);
+            jLabel10 = new JLabel(questions[8]);
+            jLabel11 = new JLabel(questions[9]);
             jScrollPane11 = new JScrollPane();
             jTextArea11 = new JTextArea();
             jScrollPane10 = new JScrollPane();
@@ -138,26 +155,6 @@ public class AliceWindow extends JFrame {
             jTextArea9.setColumns(20);
             jTextArea9.setRows(5);
             jScrollPane9.setViewportView(jTextArea9);
-
-            jLabel1.setText("jLabel1");
-
-            jLabel2.setText("jLabel2");
-
-            jLabel4.setText("jLabel4");
-
-            jLabel5.setText("jLabel5");
-
-            jLabel6.setText("jLabel6");
-
-            jLabel7.setText("jLabel7");
-
-            jLabel8.setText("jLabel8");
-
-            jLabel9.setText("jLabel9");
-
-            jLabel10.setText("jLabel10");
-
-            jLabel11.setText("jLabel11");
 
             jTextArea11.setColumns(20);
             jTextArea11.setRows(5);
@@ -274,7 +271,7 @@ public class AliceWindow extends JFrame {
             );
 
             jButton1.setText("OK");
-            jButton1.addActionListener(new java.awt.event.ActionListener() {
+            jButton1.addActionListener(new ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     jButton1ActionPerformed(evt);
                 }
@@ -303,7 +300,9 @@ public class AliceWindow extends JFrame {
         }
 
         private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-            BobResultWindow bobResultWindow = new BobResultWindow();
+            BigInteger encryptionReponse=BigInteger.ONE;
+            // TODO encryptionReponse
+            BobResultWindow bobResultWindow = new BobResultWindow(encryptionReponse);
             bobResultWindow.setVisible(true);
             this.dispose();
         }
