@@ -5,8 +5,10 @@ import Vue.Utils.Questions;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 /**
  * Created by Coco on 06/02/2016.
@@ -272,7 +274,7 @@ public class AliceWindow extends JFrame {
 
             jButton1.setText("OK");
             jButton1.addActionListener(new ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                public void actionPerformed(ActionEvent evt) {
                     jButton1ActionPerformed(evt);
                 }
             });
@@ -299,7 +301,20 @@ public class AliceWindow extends JFrame {
             pack();
         }
 
-        private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        private void jButton1ActionPerformed(ActionEvent evt) {
+            // Récupération des réponses de Alice
+            ArrayList<String> aliceReponses = new  ArrayList<String>();
+            aliceReponses.add(jTextArea10.getText());
+            aliceReponses.add(jTextArea11.getText());
+            aliceReponses.add(jTextArea2.getText());
+            aliceReponses.add(jTextArea3.getText());
+            aliceReponses.add(jTextArea4.getText());
+            aliceReponses.add(jTextArea5.getText());
+            aliceReponses.add(jTextArea6.getText());
+            aliceReponses.add(jTextArea7.getText());
+            aliceReponses.add(jTextArea8.getText());
+            aliceReponses.add(jTextArea9.getText());
+
             BigInteger encryptionReponse=BigInteger.ONE;
             // TODO encryptionReponse
             BobResultWindow bobResultWindow = new BobResultWindow(encryptionReponse);
