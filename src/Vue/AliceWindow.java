@@ -11,6 +11,8 @@ import java.awt.event.ActionListener;
 import java.math.BigInteger;
 import java.util.ArrayList;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 /**
  * Created by Coco on 06/02/2016.
  */
@@ -303,27 +305,39 @@ public class AliceWindow extends JFrame {
         }
 
         private void jButton1ActionPerformed(ActionEvent evt) {
+            // Vérification que toutes les réponses ont été données
+            if (!jTextArea2.getText().equals("") && !jTextArea3.getText().equals("")
+                    && !jTextArea4.getText().equals("") && !jTextArea5.getText().equals("")
+                    && !jTextArea6.getText().equals("") && !jTextArea7.getText().equals("")
+                    && !jTextArea8.getText().equals("") && !jTextArea9.getText().equals("")
+                    && !jTextArea10.getText().equals("") && !jTextArea11.getText().equals("")) {
 
-            // Récupération des réponses de Alice
-            ArrayList<String> aliceReponses = new  ArrayList<String>();
-            aliceReponses.add(jTextArea2.getText());
-            aliceReponses.add(jTextArea3.getText());
-            aliceReponses.add(jTextArea4.getText());
-            aliceReponses.add(jTextArea5.getText());
-            aliceReponses.add(jTextArea6.getText());
-            aliceReponses.add(jTextArea7.getText());
-            aliceReponses.add(jTextArea8.getText());
-            aliceReponses.add(jTextArea9.getText());
-            aliceReponses.add(jTextArea10.getText());
-            aliceReponses.add(jTextArea11.getText());
+                // Récupération des réponses de Alice
+                ArrayList<String> aliceReponses = new ArrayList<String>();
+                aliceReponses.add(jTextArea2.getText());
+                aliceReponses.add(jTextArea3.getText());
+                aliceReponses.add(jTextArea4.getText());
+                aliceReponses.add(jTextArea5.getText());
+                aliceReponses.add(jTextArea6.getText());
+                aliceReponses.add(jTextArea7.getText());
+                aliceReponses.add(jTextArea8.getText());
+                aliceReponses.add(jTextArea9.getText());
+                aliceReponses.add(jTextArea10.getText());
+                aliceReponses.add(jTextArea11.getText());
 
-            BigInteger encryptionReponse=BigInteger.ONE;
-            // TODO encryptionReponse
+                BigInteger encryptionReponse = BigInteger.ONE;
+                // TODO encryptionReponse
 
-            // Gestion des fenêtres
-            BobResultWindow bobResultWindow = new BobResultWindow(encryptionReponse);
-            bobResultWindow.setVisible(true);
-            this.dispose();
+                // Gestion des fenêtres
+                BobResultWindow bobResultWindow = new BobResultWindow(encryptionReponse);
+                bobResultWindow.setVisible(true);
+                this.dispose();
+
+            } else {
+                showMessageDialog(null, "Répondez à toutes les questions !",
+                        "Attention : Réponses manquantes",
+                        JOptionPane.WARNING_MESSAGE); //JOptionPane.ERROR_MESSAGE
+            }
         }
     }
 

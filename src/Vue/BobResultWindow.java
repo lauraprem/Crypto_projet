@@ -115,6 +115,7 @@ public class BobResultWindow extends JFrame {
     }
 
     private void jToggleButton1ActionPerformed(ActionEvent evt) {
+
         // Ferme la fenêtre
         this.dispose();
     }
