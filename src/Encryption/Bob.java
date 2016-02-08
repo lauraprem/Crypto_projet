@@ -4,25 +4,21 @@ import CryptoSysteme.Paillier;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Vector;
+import java.util.Random;
 
 /**
  * Created by Laura on 04/01/2016.
  */
-public class Bob {
+public class Bob extends Paillier {
+
 
     /**
-     * instance de Paillier
-     */
-    private Paillier cryptoSys;
-
-    /**
-     * numéro de la question choisie
+     * numï¿½ro de la question choisie
      */
     private BigInteger question;
 
     /**
-     * encryption du numéro de la question
+     * encryption du numï¿½ro de la question
      */
     private BigInteger I;
 
@@ -32,46 +28,42 @@ public class Bob {
     private BigInteger nbQuestion;
 
     /**
-     * réponses masquées et encryptées
+     * rï¿½ponses masquï¿½es et encryptï¿½es
      */
     private ArrayList<BigInteger> T;
 
     /**
-     * réponses masquées(sauf la ieme) et décryptée
+     * rï¿½ponses masquï¿½es(sauf la ieme) et dï¿½cryptï¿½e
      */
     private ArrayList<BigInteger> t;
 
 
-    public Bob() throws Exception {
+    public Bob() {
+        super(50);
         question = BigInteger.ONE;
         nbQuestion = BigInteger.TEN;
         T = new ArrayList<BigInteger>();
         t = new ArrayList<BigInteger>();
-        cryptoSys = new Paillier(10);
-        cryptoSys.generateKeys();
-        I = cryptoSys.encrypt(question);
+
+        I = chiffrer(question);
     }
 
-    /**
-     * permet d'obtenir le numéro de question choisie par Bob
-     *
-     * @return question
-     */
-    public BigInteger getQuestion() {
-        return question;
-    }
 
     /**
      * permet de changer le choix de la question
      *
-     * @param i numéro de la question
+     * @param i numï¿½ro de la question
      */
-    public void setQuestion(BigInteger i) throws Exception{
-        //Si le numéro de la question est compris entre 1 et le nombre de question
+    public void setQuestion(BigInteger i) {
+        //Si le numï¿½ro de la question est compris entre 1 et le nombre de question
         if (i.compareTo(BigInteger.ZERO) > 0 && i.compareTo(nbQuestion) < 1) {
             this.question = question;
-            I = cryptoSys.encrypt(this.question);
+            I = chiffrer(this.question);
         }
+    }
+
+    public BigInteger getQuestion() {
+        return question;
     }
 
     /**
@@ -80,19 +72,10 @@ public class Bob {
      *
      * @return Vector
      */
-    public Vector publicKey() {
-        return cryptoSys.publicKey();
+    public BigInteger publicKey() {
+        return super.getKeys().pk;
     }
 
-    /**
-     * Encrytion grace à Paillier
-     * @param m valeur à encrypter
-     * @return valeur encrytée
-     * @throws Exception
-     */
-    public BigInteger encrypt(BigInteger m) throws Exception {
-        return cryptoSys.encrypt(m);
-    }
 
     /**
      * Donne le nombre de questions disponibles
@@ -111,7 +94,7 @@ public class Bob {
     }
 
     /**
-     * Obtention de l'encryption du numéro de question choisi
+     * Obtention de l'encryption du numï¿½ro de question choisi
      * @return I
      */
     public BigInteger getI() {
@@ -120,19 +103,45 @@ public class Bob {
 
     /**
      * Recuperation des reponses encryptees et masquee d'Alice
-     * @param T Arraylist des réponses
+     * @param T Arraylist des rï¿½ponses
      */
     public void setReponsesEncryptees(ArrayList<BigInteger> T){
         this.T = new ArrayList<BigInteger>(T);
     }
 
     /**
-     * Décrytpion des réponses d'Alice
+     * Dï¿½crytpion des rï¿½ponses d'Alice
      * @throws Exception
      */
-    public void setReponsesDecryptees()throws Exception{
+    public ArrayList<BigInteger> setReponsesDecryptees(){
         for (int i = 0; i < T.size(); i++){
-            t.add(cryptoSys.decrypt(T.get(i)));
+            t.add(dechiffrer(T.get(i)));
         }
+        return t;
+    }
+
+    public void test(){
+        try {
+            BigInteger rand = new BigInteger(128, new Random());
+            BigInteger pkPk = getKeys().pk.multiply(getKeys().pk);
+            BigInteger rep = chiffrer(BigInteger.ONE);
+            BigInteger ei = chiffrer(BigInteger.ZERO.subtract(BigInteger.ONE));
+            BigInteger e = rep.multiply(ei.multiply( chiffrer(BigInteger.ONE)).modPow(rand, pkPk)).mod(pkPk); // (I * E) ^ Rand
+            System.out.println(dechiffrer(e));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Bob{" +
+                "question=" + question +
+                ", I=" + I +
+                ", nbQuestion=" + nbQuestion +
+                ", T=" + T +
+                ", t=" + t +
+                '}';
     }
 }

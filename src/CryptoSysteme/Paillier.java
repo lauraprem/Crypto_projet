@@ -2,207 +2,108 @@ package CryptoSysteme;
 
 import java.math.BigInteger;
 import java.util.Random;
-import java.util.Vector;
 
 /**
- * Created by Laura on 04/01/2016.
+ * Created by Laura on 08/02/2016.
  */
-public class Paillier
-{
-    private final int CERTAINTY = 64;       // certainty with which primes are generated: 1-2^(-CERTAINTY)
-    private int modLength;                  // length in bits of the modulus n
-    private BigInteger p;                   // a random prime
-    private BigInteger q;                   // a random prime (distinct from p)
-    private BigInteger lambda;              // lambda = lcm(p-1, q-1) = (p-1)*(q-1)/gcd(p-1, q-1)
-    private BigInteger n;                   // n = p*q
-    private BigInteger nsquare;             // nsquare = n*n
-    private BigInteger g;                   // a random integer in Z*_{n^2}
-    private BigInteger mu;                  // mu = (L(g^lambda mod n^2))^{-1} mod n, where L(u) = (u-1)/n
+public class Paillier {
+    public static int MAX_SIZE_R = 8;
+    private Keys keys;
 
-    public Paillier(int modLengthIn) throws Exception
-    {
-        if (modLengthIn < 8)
-            throw new Exception("Paillier(int modLength): modLength must be >= 8");
-
-        modLength = modLengthIn;
-
-        generateKeys();
+    public Paillier(int length){
+        generateKeys(length);
     }
 
-    public BigInteger getP()
-    {
-        return p;
+    public void generateKeys(int length) {
+        Random rand = new Random();
+
+        //Generation p & q
+        BigInteger p = BigInteger.probablePrime(length, rand);
+        BigInteger q;
+        do {
+            q = BigInteger.probablePrime(length, rand);
+        } while (p.compareTo(q) == 0);
+
+        //Keys
+        keys = new Keys();
+        keys.pk = p.multiply(q);
+        keys.sk = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
+
     }
 
-    public BigInteger getQ()
-    {
-        return q;
-    }
+    public BigInteger chiffrer(BigInteger m)  {
+        if ( m == null)
+        return null;
+        if (m.compareTo(keys.pk) >= 0) //|| m.compareTo(zero) <= 0)
+       return null;
 
-    public BigInteger getLambda()
-    {
-        return lambda;
-    }
-
-    public int getModLength()
-    {
-        return modLength;
-    }
-
-    public BigInteger getN()
-    {
-        return n;
-    }
-
-    public BigInteger getNsquare()
-    {
-        return nsquare;
-    }
-
-    public BigInteger getG()
-    {
-        return g;
-    }
-
-    public BigInteger getMu()
-    {
-        return mu;
-    }
-
-    public void generateKeys()
-    {
-        p = new BigInteger(modLength / 2, CERTAINTY, new Random());     // a random prime
-
-        do
-        {
-            q = new BigInteger(modLength / 2, CERTAINTY, new Random()); // a random prime (distinct from p)
-        }
-        while (q.compareTo(p) == 0);
-
-        // lambda = lcm(p-1, q-1) = (p-1)*(q-1)/gcd(p-1, q-1)
-        lambda = (p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE))).divide(
-                p.subtract(BigInteger.ONE).gcd(q.subtract(BigInteger.ONE)));
-
-        n = p.multiply(q);              // n = p*q
-        nsquare = n.multiply(n);        // nsquare = n*n
-
-        do
-        {
-            // generate g, a random integer in Z*_{n^2}
-            g = randomZStarNSquare();
-        }
-        // verify g, the following must hold: gcd(L(g^lambda mod n^2), n) = 1, where L(u) = (u-1)/n
-        while (g.modPow(lambda, nsquare).subtract(BigInteger.ONE).divide(n).gcd(n).intValue() != 1);
-
-        // mu = (L(g^lambda mod n^2))^{-1} mod n, where L(u) = (u-1)/n
-        mu = g.modPow(lambda, nsquare).subtract(BigInteger.ONE).divide(n).modInverse(n);
-    }
-
-    public BigInteger encrypt(BigInteger m) throws Exception
-    {
-        // if m is not in Z_n
-        if (m.compareTo(BigInteger.ZERO) < 0 || m.compareTo(n) >= 0)
-        {
-            throw new Exception("Paillier.encrypt(BigInteger m): plaintext m is not in Z_n");
-        }
-
-        // generate r, a random integer in Z*_n
-        BigInteger r = randomZStarN();
-
-        // c = g^m * r^n mod n^2
-        return (g.modPow(m, nsquare).multiply(r.modPow(n, nsquare))).mod(nsquare);
-    }
-
-    public BigInteger encrypt(BigInteger m, BigInteger r) throws Exception
-    {
-        // if m is not in Z_n
-        if (m.compareTo(BigInteger.ZERO) < 0 || m.compareTo(n) >= 0)
-        {
-            throw new Exception("Paillier.encrypt(BigInteger m, BigInteger r): plaintext m is not in Z_n");
-        }
-
-        // if r is not in Z*_n
-        if (r.compareTo(BigInteger.ZERO) < 0 || r.compareTo(n) >= 0 || r.gcd(n).intValue() != 1)
-        {
-            throw new Exception("Paillier.encrypt(BigInteger m, BigInteger r): random integer r is not in Z*_n");
-        }
-
-        // c = g^m * r^n mod n^2
-        return (g.modPow(m, nsquare).multiply(r.modPow(n, nsquare))).mod(nsquare);
-    }
-
-    public BigInteger decrypt(BigInteger c) throws Exception
-    {
-        // if c is not in Z*_{n^2}
-        if (c.compareTo(BigInteger.ZERO) < 0 || c.compareTo(nsquare) >= 0 || c.gcd(nsquare).intValue() != 1)
-        {
-            throw new Exception("Paillier.decrypt(BigInteger c): ciphertext c is not in Z*_{n^2}");
-        }
-
-        // m = L(c^lambda mod n^2) * mu mod n, where L(u) = (u-1)/n
-        return c.modPow(lambda, nsquare).subtract(BigInteger.ONE).divide(n).multiply(mu).mod(n);
-    }
-
-    public void printValues()
-    {
-        System.out.println("p:       " + p);
-        System.out.println("q:       " + q);
-        System.out.println("lambda:  " + lambda);
-        System.out.println("n:       " + n);
-        System.out.println("nsquare: " + nsquare);
-        System.out.println("g:       " + g);
-        System.out.println("mu:      " + mu);
-    }
-
-    // return a random integer in Z_n
-    public BigInteger randomZN()
-    {
+        //generate random number R between 0
         BigInteger r;
+        do {
+            r = new BigInteger(MAX_SIZE_R, new Random());
+        } while (r.compareTo(keys.pk) >= 0 && r.compareTo(BigInteger.ZERO) < 0);
 
-        do
-        {
-            r = new BigInteger(modLength, new Random());
-        }
-        while (r.compareTo(BigInteger.ZERO) <= 0 || r.compareTo(n) >= 0);
+        BigInteger pkPk = keys.pk.multiply(keys.pk);
 
-        return r;
+        BigInteger c; //c = ((g^m) * r^n) mod n²
+        BigInteger g = keys.pk.add(BigInteger.ONE);
+
+        BigInteger part1 = g.modPow(m, pkPk);
+        BigInteger part2 = r.modPow(keys.pk, pkPk);
+
+        c = part1.multiply(part2);
+
+        return c;
     }
 
-    // return a random integer in Z*_n
-    public BigInteger randomZStarN()
-    {
+    public BigInteger dechiffrer(BigInteger c) {
+        if (c == null)
+            return null;
+        if (keys.pk == null || keys.sk == null)
+            return null;
+
+        BigInteger pkPk = keys.pk.multiply(keys.pk);
+
+        BigInteger m; //L((c^sk) mod pk²) * mu mod pk where L(u) = (u-1) / pk and mu = sk^-1  mod pk
+
+        //u = (c ^ sk) mod pk²
+        BigInteger u = c.modPow(keys.sk, pkPk);
+        BigInteger lu = u.subtract(BigInteger.ONE).divide(keys.pk);//L(u) = (u-1) / pk
+
+        //mu = sk^-1  mod pk
+        BigInteger mu = keys.sk.modPow(BigInteger.ONE.negate(), keys.pk);
+
+        m = lu.multiply(mu).mod(keys.pk);
+
+        return m;
+    }
+
+    public Keys getKeys() {
+        return keys;
+    }
+
+    public static BigInteger chiffrer(BigInteger m, BigInteger pk)  {
+        if ( m == null || pk == null)
+            return null;
+        if (m.compareTo(pk) >= 0) //|| m.compareTo(zero) <= 0)
+            return null;
+
+        //generate random number R between 0
         BigInteger r;
+        do {
+            r = new BigInteger(MAX_SIZE_R, new Random());
+        } while (r.compareTo(pk) >= 0 && r.compareTo(BigInteger.ZERO) < 0);
 
-        do
-        {
-            r = new BigInteger(modLength, new Random());
-        }
-        while (r.compareTo(n) >= 0 || r.gcd(n).intValue() != 1);
+        BigInteger pkPk = pk.multiply(pk);
 
-        return r;
-    }
+        BigInteger c; //c = ((g^m) * r^n) mod n²
+        BigInteger g = pk.add(BigInteger.ONE);
 
-    // return a random integer in Z*_{n^2}
-    public BigInteger randomZStarNSquare()
-    {
-        BigInteger r;
+        BigInteger part1 = g.modPow(m, pkPk);
+        BigInteger part2 = r.modPow(pk, pkPk);
 
-        do
-        {
-            r = new BigInteger(modLength * 2, new Random());
-        }
-        while (r.compareTo(nsquare) >= 0 || r.gcd(nsquare).intValue() != 1);
+        c = part1.multiply(part2);
 
-        return r;
-    }
-
-    // return 21
-    public Vector publicKey()
-    {
-        Vector pubKey = new Vector();
-        pubKey.add(n);
-        pubKey.add(g);
-
-        return pubKey;
+        return c;
     }
 }
