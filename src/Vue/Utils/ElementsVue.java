@@ -21,6 +21,6 @@ public class ElementsVue {
     }
 
     public static String getAliceName() {
-        return "Bob";
+        return "Alice";
     }
 }

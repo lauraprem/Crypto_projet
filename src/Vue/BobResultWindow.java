@@ -22,7 +22,7 @@ public class BobResultWindow extends JFrame {
     private JToggleButton jToggleButton1;
 
     public BobResultWindow(BigInteger encryptionReponse) {
-        // TODO Decryption
+        // TODO Decryption de l'envoi d'Alice
         String reponseAlice = "Réponse de alice";
 
         initComponents();
@@ -51,9 +51,6 @@ public class BobResultWindow extends JFrame {
         jLabelConsignes = new JLabel("Voici la réponse :");
         jLabelBobName = new JLabel("Bob");
         jToggleButton1 = new JToggleButton("Quitter");
-
-        // TODO decrypt T
-        jLabelRecept.setText("");
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -118,6 +115,7 @@ public class BobResultWindow extends JFrame {
     }
 
     private void jToggleButton1ActionPerformed(ActionEvent evt) {
+        // Ferme la fenêtre
         this.dispose();
     }
 }

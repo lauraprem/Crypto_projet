@@ -1,6 +1,7 @@
 package Vue;
 
 import Utils.BigIntegerUtils;
+import Vue.Utils.ElementsVue;
 import Vue.Utils.Questions;
 
 import javax.swing.*;
@@ -120,11 +121,11 @@ public class AliceWindow extends JFrame {
 
             setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-            jLabelConsignes1.setText("Ecrivez les réponses aux questions.");
+            jLabelConsignes1.setText(ElementsVue.getConsignesAlice());
             jLabelConsignes1.setToolTipText("");
             jLabelConsignes1.setVerticalAlignment(SwingConstants.TOP);
 
-            jLabel3.setText("Alice");
+            jLabel3.setText(ElementsVue.getAliceName());
 
             jTextArea2.setColumns(20);
             jTextArea2.setRows(5);
@@ -302,6 +303,7 @@ public class AliceWindow extends JFrame {
         }
 
         private void jButton1ActionPerformed(ActionEvent evt) {
+
             // Récupération des réponses de Alice
             ArrayList<String> aliceReponses = new  ArrayList<String>();
             aliceReponses.add(jTextArea10.getText());
@@ -317,6 +319,8 @@ public class AliceWindow extends JFrame {
 
             BigInteger encryptionReponse=BigInteger.ONE;
             // TODO encryptionReponse
+
+            // Gestion des fenêtres
             BobResultWindow bobResultWindow = new BobResultWindow(encryptionReponse);
             bobResultWindow.setVisible(true);
             this.dispose();

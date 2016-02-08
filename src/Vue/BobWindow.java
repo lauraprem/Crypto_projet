@@ -61,7 +61,7 @@ public class BobWindow extends JFrame {
         buttonOkBob.setText(ElementsVue.getOk());
         buttonOkBob.setActionCommand("Onclick");
         buttonOkBob.addActionListener(new ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            public void actionPerformed(ActionEvent evt) {
                 buttonOkBobActionPerformed(evt);
             }
         });
