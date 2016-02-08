@@ -306,8 +306,6 @@ public class AliceWindow extends JFrame {
 
             // Récupération des réponses de Alice
             ArrayList<String> aliceReponses = new  ArrayList<String>();
-            aliceReponses.add(jTextArea10.getText());
-            aliceReponses.add(jTextArea11.getText());
             aliceReponses.add(jTextArea2.getText());
             aliceReponses.add(jTextArea3.getText());
             aliceReponses.add(jTextArea4.getText());
@@ -316,6 +314,8 @@ public class AliceWindow extends JFrame {
             aliceReponses.add(jTextArea7.getText());
             aliceReponses.add(jTextArea8.getText());
             aliceReponses.add(jTextArea9.getText());
+            aliceReponses.add(jTextArea10.getText());
+            aliceReponses.add(jTextArea11.getText());
 
             BigInteger encryptionReponse=BigInteger.ONE;
             // TODO encryptionReponse

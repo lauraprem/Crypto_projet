@@ -117,7 +117,7 @@ public class BobWindow extends JFrame {
     }
 
     private void buttonOkBobActionPerformed(ActionEvent evt) {
-        String idQuestion = jComboBoxQuest.getSelectedIndex()+"";
+        String idQuestion = (jComboBoxQuest.getSelectedIndex()+1)+"";
         // TODO encryption idQuestion
         BigInteger encryptNumQuest = BigIntegerUtils.StringToBigInteger(idQuestion);
 
