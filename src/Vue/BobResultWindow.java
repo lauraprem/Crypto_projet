@@ -1,10 +1,15 @@
 package Vue;
 
+import Encryption.Bob;
+import Utils.BigIntegerUtils;
+
 import javax.swing.*;
+import javax.swing.text.Element;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,14 +25,19 @@ public class BobResultWindow extends JFrame {
     private JLabel jLabelBobName;
     private JPanel jPanelBob;
     private JToggleButton jToggleButton1;
+    private Bob bob;
 
-    public BobResultWindow(BigInteger encryptionReponse) {
-        // TODO Decryption de l'envoi d'Alice
-        String reponseAlice = "Réponse de alice";
+    public BobResultWindow(Bob bob) {
+        ArrayList<BigInteger> reponsesAlice =  bob.setReponsesDecryptees();
+        System.out.println(bob.setReponsesDecryptees());
+        String  tmp = "";
+        for(int i=0; i < reponsesAlice.size();i++){
+            tmp = tmp +" "+ BigIntegerUtils.parseToString(reponsesAlice.get(i));
+        }
 
         initComponents();
 
-        jLabelRecept.setText(reponseAlice);
+        jLabelRecept.setText(BigIntegerUtils.parseToString(bob.setReponsesDecryptees().get(Integer.parseInt(BigIntegerUtils.parseToString(bob.getQuestion()))-1)));
     }
 
     /**

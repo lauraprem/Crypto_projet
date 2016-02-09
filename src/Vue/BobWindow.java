@@ -1,5 +1,7 @@
 package Vue;
 
+import Encryption.Alice;
+import Encryption.Bob;
 import Utils.BigIntegerUtils;
 import Vue.Utils.ElementsVue;
 import Vue.Utils.Questions;
@@ -46,14 +48,14 @@ public class BobWindow extends JFrame {
         setLocation(screenWidth / 4, screenHeight / 4);
 
         jPanelBob = new JPanel();
-        jComboBoxQuest = new JComboBox<>();
+        jComboBoxQuest = new JComboBox(Questions.getQuestions());
         jLabelConsignes = new JLabel();
         buttonOkBob = new JToggleButton();
         jLabelBobName = new JLabel();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        jComboBoxQuest.setModel(new DefaultComboBoxModel<>(Questions.getQuestions()));
+        //jComboBoxQuest.setModel(new DefaultComboBoxModel<>(Questions.getQuestions()));
         jLabelConsignes.setText(ElementsVue.getConsignesBobNum());
         jLabelConsignes.setToolTipText("");
         jLabelConsignes.setVerticalAlignment(SwingConstants.TOP);
@@ -117,12 +119,21 @@ public class BobWindow extends JFrame {
     }
 
     private void buttonOkBobActionPerformed(ActionEvent evt) {
+        //Bob donne l'encryption du numéro de question choisi
         String idQuestion = (jComboBoxQuest.getSelectedIndex()+1)+"";
-        // TODO encryption idQuestion
-        BigInteger encryptNumQuest = BigIntegerUtils.StringToBigInteger(idQuestion);
+        Bob bob = new Bob();
+        bob.setQuestion(BigIntegerUtils.StringToBigInteger(idQuestion));
+
+        System.out.println("Numéro de question demandée par Bob : " + BigIntegerUtils.parseToString(BigIntegerUtils.StringToBigInteger(idQuestion)));
+        System.out.println("Numéro de question demandée par Bob getQuestion : "+BigIntegerUtils.parseToString(bob.getQuestion()));
+
+        // Tests conversions
+        BigInteger id = BigIntegerUtils.StringToBigInteger(idQuestion);
+        String idQuestionTest = BigIntegerUtils.parseToString(id);
+        System.out.println("Teste de conversion : "+Integer.parseInt(idQuestionTest));
 
         // Gestion des fenêtres
-        AliceWindow aliceWindow = new AliceWindow(encryptNumQuest);
+        AliceWindow aliceWindow = new AliceWindow(bob);
         this.setVisible(false);
         aliceWindow.setVisible(true);
         this.dispose();

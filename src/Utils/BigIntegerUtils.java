@@ -85,16 +85,18 @@ public class BigIntegerUtils {
     }
 
     public static BigInteger StringToBigInteger(String text) {
-        BigInteger bingInteger = new BigInteger(text);
+        //BigInteger bingInteger = new BigInteger(text.getBytes());
+        return new BigInteger(text.getBytes());
 
-        return bingInteger;
+        //return bingInteger;
     }
 
     public static String parseToString(BigInteger bingInteger) {
         //BigInteger bi = new BigInteger(msg.getBytes());
         //System.out.println(new String(bi.toByteArray()));
 
-        return bingInteger.toString();
+        //return bingInteger.toString();
+        return new String(bingInteger.toByteArray());
     }
 
 

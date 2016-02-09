@@ -1,5 +1,7 @@
 package Vue;
 
+import Encryption.Alice;
+import Encryption.Bob;
 import Utils.BigIntegerUtils;
 import Vue.Utils.ElementsVue;
 import Vue.Utils.Questions;
@@ -63,8 +65,10 @@ public class AliceWindow extends JFrame {
     private JTextArea jTextArea7;
     private JTextArea jTextArea8;
     private JTextArea jTextArea9;
+    private Bob bob;
 
-    public AliceWindow(BigInteger encryptNumQuest) {
+    public AliceWindow(Bob bob) {
+        this.bob = bob;
         initComponents();
     }
 
@@ -313,23 +317,28 @@ public class AliceWindow extends JFrame {
                     && !jTextArea10.getText().equals("") && !jTextArea11.getText().equals("")) {
 
                 // Récupération des réponses de Alice
-                ArrayList<String> aliceReponses = new ArrayList<String>();
-                aliceReponses.add(jTextArea2.getText());
-                aliceReponses.add(jTextArea3.getText());
-                aliceReponses.add(jTextArea4.getText());
-                aliceReponses.add(jTextArea5.getText());
-                aliceReponses.add(jTextArea6.getText());
-                aliceReponses.add(jTextArea7.getText());
-                aliceReponses.add(jTextArea8.getText());
-                aliceReponses.add(jTextArea9.getText());
-                aliceReponses.add(jTextArea10.getText());
-                aliceReponses.add(jTextArea11.getText());
+                ArrayList<BigInteger> aliceReponses = new ArrayList<BigInteger> ();
+                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea2.getText()));
+                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea3.getText()));
+                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea4.getText()));
+                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea5.getText()));
+                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea6.getText()));
+                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea7.getText()));
+                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea8.getText()));
+                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea9.getText()));
+                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea10.getText()));
+                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea11.getText()));
 
-                BigInteger encryptionReponse = BigInteger.ONE;
-                // TODO encryptionReponse
+                Alice alice = new Alice(aliceReponses,bob.publicKey());
+
+                //Bob donne l'encryption du numéro de question choisi
+                alice.setQuestion(bob.getI());
+
+                //Alice donne la liste des réponses masquées et encryptées
+                bob.setReponsesEncryptees(alice.generateValeursMasquees());
 
                 // Gestion des fenêtres
-                BobResultWindow bobResultWindow = new BobResultWindow(encryptionReponse);
+                BobResultWindow bobResultWindow = new BobResultWindow(bob);
                 bobResultWindow.setVisible(true);
                 this.dispose();
 
