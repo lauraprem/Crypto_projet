@@ -120,17 +120,15 @@ public class BobWindow extends JFrame {
 
     private void buttonOkBobActionPerformed(ActionEvent evt) {
         //Bob donne l'encryption du numéro de question choisi
-        String idQuestion = (jComboBoxQuest.getSelectedIndex()+1)+"";
+        BigInteger idQuestion = BigInteger.valueOf(jComboBoxQuest.getSelectedIndex()+1);
         Bob bob = new Bob();
-        bob.setQuestion(BigIntegerUtils.StringToBigInteger(idQuestion));
+        bob.setQuestion(idQuestion);
 
-        System.out.println("Numéro de question demandée par Bob : " + BigIntegerUtils.parseToString(BigIntegerUtils.StringToBigInteger(idQuestion)));
-        System.out.println("Numéro de question demandée par Bob getQuestion : "+BigIntegerUtils.parseToString(bob.getQuestion()));
 
         // Tests conversions
-        BigInteger id = BigIntegerUtils.StringToBigInteger(idQuestion);
+      /*  BigInteger id = BigIntegerUtils.StringToBigInteger(idQuestion);
         String idQuestionTest = BigIntegerUtils.parseToString(id);
-        System.out.println("Teste de conversion : "+Integer.parseInt(idQuestionTest));
+        System.out.println("Teste de conversion : "+Integer.parseInt(idQuestionTest));*/
 
         // Gestion des fenêtres
         AliceWindow aliceWindow = new AliceWindow(bob);

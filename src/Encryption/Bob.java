@@ -39,7 +39,7 @@ public class Bob extends Paillier {
 
 
     public Bob() {
-        super(50);
+        super(512);
         question = BigInteger.ONE;
         nbQuestion = BigInteger.TEN;
         T = new ArrayList<BigInteger>();

@@ -29,15 +29,8 @@ public class BobResultWindow extends JFrame {
 
     public BobResultWindow(Bob bob) {
         ArrayList<BigInteger> reponsesAlice =  bob.setReponsesDecryptees();
-        System.out.println(bob.setReponsesDecryptees());
-        String  tmp = "";
-        for(int i=0; i < reponsesAlice.size();i++){
-            tmp = tmp +" "+ BigIntegerUtils.parseToString(reponsesAlice.get(i));
-        }
-
         initComponents();
-
-        jLabelRecept.setText(BigIntegerUtils.parseToString(bob.setReponsesDecryptees().get(Integer.parseInt(BigIntegerUtils.parseToString(bob.getQuestion()))-1)));
+        jLabelRecept.setText(BigIntegerUtils.parseToString(bob.setReponsesDecryptees().get(bob.getQuestion().intValue()-1)));
     }
 
     /**

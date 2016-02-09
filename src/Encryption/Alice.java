@@ -38,7 +38,11 @@ public class Alice {
             BigInteger rand = new BigInteger(128, new Random());
             BigInteger pkPk = pk.multiply(pk);
             BigInteger ei = Paillier.chiffrer(i.negate(),pk);
-            encryptedMasquedResponses.add(rep.multiply(ei.multiply(question).modPow(rand, pkPk)).mod(pkPk)); // (I * E) ^ Rand
+            BigInteger a = ei.multiply(question).modPow(rand, pkPk);
+            System.out.println(a);
+            System.out.println(rep);
+            BigInteger b = rep.multiply(a).mod(pkPk);
+            encryptedMasquedResponses.add(b); // (I * E) ^ Rand
            i= i.add(BigInteger.ONE);
         }
         return encryptedMasquedResponses;
