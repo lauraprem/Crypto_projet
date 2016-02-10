@@ -57,7 +57,7 @@ public class Bob extends Paillier {
     public void setQuestion(BigInteger i) {
         //Si le num�ro de la question est compris entre 1 et le nombre de question
         if (i.compareTo(BigInteger.ZERO) > 0 && i.compareTo(nbQuestion) < 1) {
-            this.question = question;
+            this.question = i;
             I = chiffrer(this.question);
         }
     }
