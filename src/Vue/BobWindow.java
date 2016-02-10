@@ -47,6 +47,8 @@ public class BobWindow extends JFrame {
         setSize(screenWidth / 2, screenHeight / 2);
         setLocation(screenWidth / 4, screenHeight / 4);
 
+        setResizable(false);
+
         jPanelBob = new JPanel();
         jComboBoxQuest = new JComboBox(Questions.getQuestions());
         jLabelConsignes = new JLabel();

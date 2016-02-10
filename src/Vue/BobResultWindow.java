@@ -50,6 +50,8 @@ public class BobResultWindow extends JFrame {
         setSize(screenWidth / 2, screenHeight / 2);
         setLocation(screenWidth / 4, screenHeight / 4);
 
+        setResizable(false);
+
         jPanelBob = new JPanel();
         jLabelRecept = new JLabel();
         jLabelConsignes = new JLabel("Voici la réponse :");

@@ -22,15 +22,6 @@ import static javax.swing.JOptionPane.showMessageDialog;
 public class AliceWindow extends JFrame {
 
     // Variables declaration
-   /* private JButton jButton1;
-    private JLabel jLabelAliceName;
-    private JLabel[] jLabelRepons;
-    private JLabel jLabelConsignes;
-    private JPanel jPanelAlice;
-    private JScrollPane[] jScrollPanes;
-    private JTextArea[] jTextAreaRepons;*/
-
-    // Variables declaration
     private JButton jButton1;
     private JLabel jLabel1;
     private JLabel jLabel10;
@@ -87,6 +78,8 @@ public class AliceWindow extends JFrame {
         // Centrer la fenêtre dans l'écran
         setSize(screenWidth / 2, screenHeight / 2);
         setLocation(screenWidth / 4, screenHeight / 8);
+
+        setResizable(false);
 
         String[] questions = Questions.getQuestions();
 
@@ -363,106 +356,3 @@ public class AliceWindow extends JFrame {
 
     }
 }
-
-
-
-
-
-/**
- * This method is called from within the constructor to initialize the form.
- */
-   /* @SuppressWarnings("unchecked")
-    private void initComponents() {
-
-        jPanelAlice = new JPanel();
-
-        jLabelConsignes = new JLabel();
-        jLabelConsignes.setText(ElementsVue.getConsignesAlice());
-        jLabelConsignes.setToolTipText("");
-        jLabelConsignes.setVerticalAlignment(SwingConstants.TOP);
-
-        jLabelAliceName = new JLabel();
-        jLabelAliceName.setText(ElementsVue.getAliceName());
-
-        String[] listQuestion = Questions.getQuestions();
-        jTextAreaRepons = new JTextArea[listQuestion.length];
-        jScrollPanes = new JScrollPane[listQuestion.length];
-        jLabelRepons = new JLabel[listQuestion.length];
-        for (int i=0;i<listQuestion.length;i++){
-            jTextAreaRepons[i] = new JTextArea();
-            jScrollPanes[i] = new JScrollPane();
-            jLabelRepons[i] = new JLabel(listQuestion[i]);
-
-            jTextAreaRepons[i].setColumns(20);
-            jTextAreaRepons[i].setRows(5);
-            jScrollPanes[i].setViewportView(jTextAreaRepons[i]);
-        }
-
-        jButton1 = new JButton();
-
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-        GroupLayout jPanelAliceLayout = new GroupLayout(jPanelAlice);
-        jPanelAlice.setLayout(jPanelAliceLayout);
-        jPanelAliceLayout.setHorizontalGroup(
-                jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(GroupLayout.Alignment.TRAILING, jPanelAliceLayout.createSequentialGroup()
-                                .addComponent(jLabelConsignes, GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelAliceName)
-                                .addGap(248, 248, 248)));
-
-        listQuestion = Questions.getQuestions();
-        for (int i=0;i<listQuestion.length;i=i+2) {
-            jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPanes[i], GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                    .addComponent(jScrollPanes[i + 1])
-                    .addComponent(jLabelRepons[i])
-                    .addComponent(jLabelRepons[i + 1]);
-        }
-
-        jPanelAliceLayout.setVerticalGroup(
-                jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabelAliceName)
-                                        .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(jLabelConsignes)))
-                                .addGap(19, 19, 19)));
-
-        jButton1.setText("OK");
-        jButton1.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        GroupLayout layout = new GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanelAlice, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createSequentialGroup()
-                                .addGap(228, 228, 228)
-                                .addComponent(jButton1)
-                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanelAlice, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton1)
-                                .addContainerGap())
-        );
-
-        pack();
-    }
-
-    private void jButton1ActionPerformed(ActionEvent evt) {
-        BobResultWindow bobResultWindow = new BobResultWindow();
-        bobResultWindow.setVisible(true);
-        this.dispose();
-    }
-}*/
