@@ -124,12 +124,6 @@ public class BobWindow extends JFrame {
         Bob bob = new Bob();
         bob.setQuestion(idQuestion);
 
-
-        // Tests conversions
-      /*  BigInteger id = BigIntegerUtils.StringToBigInteger(idQuestion);
-        String idQuestionTest = BigIntegerUtils.parseToString(id);
-        System.out.println("Teste de conversion : "+Integer.parseInt(idQuestionTest));*/
-
         // Gestion des fenêtres
         AliceWindow aliceWindow = new AliceWindow(bob);
         this.setVisible(false);

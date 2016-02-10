@@ -72,264 +72,276 @@ public class AliceWindow extends JFrame {
         initComponents();
     }
 
-        /**
-         * This method is called from within the constructor to initialize the form.
-         */
-        @SuppressWarnings("unchecked")
-        private void initComponents() {
+    /**
+     * This method is called from within the constructor to initialize the form.
+     */
+    @SuppressWarnings("unchecked")
+    private void initComponents() {
 
-            // Obtenir la résolution de l'écran
-            Toolkit kit = Toolkit.getDefaultToolkit();
-            Dimension screenSize = kit.getScreenSize();
-            int screenHeight = screenSize.height;
-            int screenWidth = screenSize.width;
+        // Obtenir la résolution de l'écran
+        Toolkit kit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = kit.getScreenSize();
+        int screenHeight = screenSize.height;
+        int screenWidth = screenSize.width;
 
-            // Centrer la fenêtre dans l'écran
-            setSize(screenWidth / 2, screenHeight / 2);
-            setLocation(screenWidth / 4, screenHeight / 8);
+        // Centrer la fenêtre dans l'écran
+        setSize(screenWidth / 2, screenHeight / 2);
+        setLocation(screenWidth / 4, screenHeight / 8);
 
-            String[] questions = Questions.getQuestions();
+        String[] questions = Questions.getQuestions();
 
-            jPanelAlice = new JPanel();
-            jLabelConsignes1 = new JLabel();
-            jLabel3 = new JLabel();
-            jScrollPane2 = new JScrollPane();
-            jTextArea2 = new JTextArea();
-            jScrollPane3 = new JScrollPane();
-            jTextArea3 = new JTextArea();
-            jScrollPane4 = new JScrollPane();
-            jTextArea4 = new JTextArea();
-            jScrollPane5 = new JScrollPane();
-            jTextArea5 = new JTextArea();
-            jScrollPane6 = new JScrollPane();
-            jTextArea6 = new JTextArea();
-            jScrollPane7 = new JScrollPane();
-            jTextArea7 = new JTextArea();
-            jScrollPane8 = new JScrollPane();
-            jTextArea8 = new JTextArea();
-            jScrollPane9 = new JScrollPane();
-            jTextArea9 = new JTextArea();
-            jLabel1 = new JLabel(questions[0]);
-            jLabel2 = new JLabel(questions[1]);
-            jLabel4 = new JLabel(questions[2]);
-            jLabel5 = new JLabel(questions[3]);
-            jLabel6 = new JLabel(questions[4]);
-            jLabel7 = new JLabel(questions[5]);
-            jLabel8 = new JLabel(questions[6]);
-            jLabel9 = new JLabel(questions[7]);
-            jLabel10 = new JLabel(questions[8]);
-            jLabel11 = new JLabel(questions[9]);
-            jScrollPane11 = new JScrollPane();
-            jTextArea11 = new JTextArea();
-            jScrollPane10 = new JScrollPane();
-            jTextArea10 = new JTextArea();
-            jButton1 = new JButton();
+        jPanelAlice = new JPanel();
+        jLabelConsignes1 = new JLabel();
+        jLabel3 = new JLabel();
+        jScrollPane2 = new JScrollPane();
+        jTextArea2 = new JTextArea();
+        jScrollPane3 = new JScrollPane();
+        jTextArea3 = new JTextArea();
+        jScrollPane4 = new JScrollPane();
+        jTextArea4 = new JTextArea();
+        jScrollPane5 = new JScrollPane();
+        jTextArea5 = new JTextArea();
+        jScrollPane6 = new JScrollPane();
+        jTextArea6 = new JTextArea();
+        jScrollPane7 = new JScrollPane();
+        jTextArea7 = new JTextArea();
+        jScrollPane8 = new JScrollPane();
+        jTextArea8 = new JTextArea();
+        jScrollPane9 = new JScrollPane();
+        jTextArea9 = new JTextArea();
+        jLabel1 = new JLabel(questions[0]);
+        jLabel2 = new JLabel(questions[1]);
+        jLabel4 = new JLabel(questions[2]);
+        jLabel5 = new JLabel(questions[3]);
+        jLabel6 = new JLabel(questions[4]);
+        jLabel7 = new JLabel(questions[5]);
+        jLabel8 = new JLabel(questions[6]);
+        jLabel9 = new JLabel(questions[7]);
+        jLabel10 = new JLabel(questions[8]);
+        jLabel11 = new JLabel(questions[9]);
+        jScrollPane11 = new JScrollPane();
+        jTextArea11 = new JTextArea();
+        jScrollPane10 = new JScrollPane();
+        jTextArea10 = new JTextArea();
+        jButton1 = new JButton();
 
-            setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-            jLabelConsignes1.setText(ElementsVue.getConsignesAlice());
-            jLabelConsignes1.setToolTipText("");
-            jLabelConsignes1.setVerticalAlignment(SwingConstants.TOP);
+        jLabelConsignes1.setText(ElementsVue.getConsignesAlice());
+        jLabelConsignes1.setToolTipText("");
+        jLabelConsignes1.setVerticalAlignment(SwingConstants.TOP);
 
-            jLabel3.setText(ElementsVue.getAliceName());
+        jLabel3.setText(ElementsVue.getAliceName());
 
-            jTextArea2.setColumns(20);
-            jTextArea2.setRows(5);
-            jScrollPane2.setViewportView(jTextArea2);
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
 
-            jTextArea3.setColumns(20);
-            jTextArea3.setRows(5);
-            jScrollPane3.setViewportView(jTextArea3);
+        jTextArea3.setColumns(20);
+        jTextArea3.setRows(5);
+        jScrollPane3.setViewportView(jTextArea3);
 
-            jTextArea4.setColumns(20);
-            jTextArea4.setRows(5);
-            jScrollPane4.setViewportView(jTextArea4);
+        jTextArea4.setColumns(20);
+        jTextArea4.setRows(5);
+        jScrollPane4.setViewportView(jTextArea4);
 
-            jTextArea5.setColumns(20);
-            jTextArea5.setRows(5);
-            jScrollPane5.setViewportView(jTextArea5);
+        jTextArea5.setColumns(20);
+        jTextArea5.setRows(5);
+        jScrollPane5.setViewportView(jTextArea5);
 
-            jTextArea6.setColumns(20);
-            jTextArea6.setRows(5);
-            jScrollPane6.setViewportView(jTextArea6);
+        jTextArea6.setColumns(20);
+        jTextArea6.setRows(5);
+        jScrollPane6.setViewportView(jTextArea6);
 
-            jTextArea7.setColumns(20);
-            jTextArea7.setRows(5);
-            jScrollPane7.setViewportView(jTextArea7);
+        jTextArea7.setColumns(20);
+        jTextArea7.setRows(5);
+        jScrollPane7.setViewportView(jTextArea7);
 
-            jTextArea8.setColumns(20);
-            jTextArea8.setRows(5);
-            jScrollPane8.setViewportView(jTextArea8);
+        jTextArea8.setColumns(20);
+        jTextArea8.setRows(5);
+        jScrollPane8.setViewportView(jTextArea8);
 
-            jTextArea9.setColumns(20);
-            jTextArea9.setRows(5);
-            jScrollPane9.setViewportView(jTextArea9);
+        jTextArea9.setColumns(20);
+        jTextArea9.setRows(5);
+        jScrollPane9.setViewportView(jTextArea9);
 
-            jTextArea11.setColumns(20);
-            jTextArea11.setRows(5);
-            jScrollPane11.setViewportView(jTextArea11);
+        jTextArea11.setColumns(20);
+        jTextArea11.setRows(5);
+        jScrollPane11.setViewportView(jTextArea11);
 
-            jTextArea10.setColumns(20);
-            jTextArea10.setRows(5);
-            jScrollPane10.setViewportView(jTextArea10);
+        jTextArea10.setColumns(20);
+        jTextArea10.setRows(5);
+        jScrollPane10.setViewportView(jTextArea10);
 
-            GroupLayout jPanelAliceLayout = new GroupLayout(jPanelAlice);
-            jPanelAlice.setLayout(jPanelAliceLayout);
-            jPanelAliceLayout.setHorizontalGroup(
-                    jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(GroupLayout.Alignment.TRAILING, jPanelAliceLayout.createSequentialGroup()
-                                    .addComponent(jLabelConsignes1, GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jLabel3)
-                                    .addGap(248, 248, 248))
-                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                                    .addComponent(jScrollPane4))
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel6))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                            .addComponent(jScrollPane5, GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-                                            .addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
-                                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel7)
-                                                            .addComponent(jLabel5)
-                                                            .addComponent(jLabel2))
-                                                    .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                                    .addComponent(jScrollPane7)
-                                                    .addComponent(jScrollPane8, GroupLayout.PREFERRED_SIZE, 248, GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel10))
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jScrollPane6)
-                                                            .addComponent(jScrollPane9)
-                                                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                                                    .addComponent(jLabel9)
-                                                                    .addGap(0, 0, Short.MAX_VALUE))))
-                                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                                    .addGap(6, 6, 6)
-                                                    .addComponent(jLabel11)
-                                                    .addGap(0, 0, Short.MAX_VALUE))))
-                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                    .addComponent(jScrollPane11, GroupLayout.PREFERRED_SIZE, 248, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jScrollPane10))
-            );
-            jPanelAliceLayout.setVerticalGroup(
-                    jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                                    .addContainerGap()
-                                                    .addComponent(jLabelConsignes1)))
-                                    .addGap(19, 19, 19)
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel1)
-                                            .addComponent(jLabel2))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
-                                            .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel5))
-                                    .addGap(4, 4, 4)
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jScrollPane4, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                            .addComponent(jScrollPane5, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                                    .addGap(10, 10, 10)
-                                                    .addComponent(jLabel6))
-                                            .addGroup(jPanelAliceLayout.createSequentialGroup()
-                                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                    .addComponent(jLabel7)))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jScrollPane7, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                            .addComponent(jScrollPane6, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel9))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jScrollPane8, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                            .addComponent(jScrollPane9, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel10)
-                                            .addComponent(jLabel11))
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jScrollPane11, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                            .addComponent(jScrollPane10, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
-                                    .addContainerGap())
-            );
+        GroupLayout jPanelAliceLayout = new GroupLayout(jPanelAlice);
+        jPanelAlice.setLayout(jPanelAliceLayout);
+        jPanelAliceLayout.setHorizontalGroup(
+                jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(GroupLayout.Alignment.TRAILING, jPanelAliceLayout.createSequentialGroup()
+                                .addComponent(jLabelConsignes1, GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel3)
+                                .addGap(248, 248, 248))
+                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                                                .addComponent(jScrollPane4))
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel6))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane5, GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane3, GroupLayout.DEFAULT_SIZE, 267, Short.MAX_VALUE)
+                                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel7)
+                                                        .addComponent(jLabel5)
+                                                        .addComponent(jLabel2))
+                                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jScrollPane7)
+                                                .addComponent(jScrollPane8, GroupLayout.PREFERRED_SIZE, 248, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel10))
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jScrollPane6)
+                                                        .addComponent(jScrollPane9)
+                                                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                                                .addComponent(jLabel9)
+                                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addComponent(jLabel11)
+                                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                .addComponent(jScrollPane11, GroupLayout.PREFERRED_SIZE, 248, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane10))
+        );
+        jPanelAliceLayout.setVerticalGroup(
+                jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel3)
+                                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jLabelConsignes1)))
+                                .addGap(19, 19, 19)
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel1)
+                                        .addComponent(jLabel2))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane2, GroupLayout.DEFAULT_SIZE, 58, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel4)
+                                        .addComponent(jLabel5))
+                                .addGap(4, 4, 4)
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane4, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane5, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                                .addGap(10, 10, 10)
+                                                .addComponent(jLabel6))
+                                        .addGroup(jPanelAliceLayout.createSequentialGroup()
+                                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel7)))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane7, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane6, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel8)
+                                        .addComponent(jLabel9))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane8, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane9, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel10)
+                                        .addComponent(jLabel11))
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanelAliceLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jScrollPane11, GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                        .addComponent(jScrollPane10, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap())
+        );
 
-            jButton1.setText("OK");
-            jButton1.addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    jButton1ActionPerformed(evt);
+        jButton1.setText("OK");
+        jButton1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        GroupLayout layout = new GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanelAlice, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createSequentialGroup()
+                                .addGap(228, 228, 228)
+                                .addComponent(jButton1)
+                                .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanelAlice, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)
+                                .addContainerGap())
+        );
+
+        pack();
+    }
+
+    private void jButton1ActionPerformed(ActionEvent evt) {
+        // Vérification que toutes les réponses ont été données
+        if (!jTextArea2.getText().equals("") && !jTextArea3.getText().equals("")
+                && !jTextArea4.getText().equals("") && !jTextArea5.getText().equals("")
+                && !jTextArea6.getText().equals("") && !jTextArea7.getText().equals("")
+                && !jTextArea8.getText().equals("") && !jTextArea9.getText().equals("")
+                && !jTextArea10.getText().equals("") && !jTextArea11.getText().equals("")) {
+
+            // Récupération des réponses de Alice
+            ArrayList<BigInteger> aliceReponses = new ArrayList<BigInteger>();
+            aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea2.getText()));
+            aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea3.getText()));
+            aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea4.getText()));
+            aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea5.getText()));
+            aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea6.getText()));
+            aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea7.getText()));
+            aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea8.getText()));
+            aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea9.getText()));
+            aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea10.getText()));
+            aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea11.getText()));
+
+            boolean isNotErrorLenght = true;
+            for(int i=0;i<aliceReponses.size();i++) {
+                if (aliceReponses.get(i).bitLength() > 1023) {
+                    showMessageDialog(null, "Une ou plusieurs réponses sont trop longues !",
+                            "Attention : Réponses trop longues",
+                            JOptionPane.ERROR_MESSAGE);
+                    isNotErrorLenght = false;
+                    break;
                 }
-            });
+            }
 
-            GroupLayout layout = new GroupLayout(getContentPane());
-            getContentPane().setLayout(layout);
-            layout.setHorizontalGroup(
-                    layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanelAlice, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                    .addGap(228, 228, 228)
-                                    .addComponent(jButton1)
-                                    .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            );
-            layout.setVerticalGroup(
-                    layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jPanelAlice, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jButton1)
-                                    .addContainerGap())
-            );
-
-            pack();
-        }
-
-        private void jButton1ActionPerformed(ActionEvent evt) {
-            // Vérification que toutes les réponses ont été données
-            if (!jTextArea2.getText().equals("") && !jTextArea3.getText().equals("")
-                    && !jTextArea4.getText().equals("") && !jTextArea5.getText().equals("")
-                    && !jTextArea6.getText().equals("") && !jTextArea7.getText().equals("")
-                    && !jTextArea8.getText().equals("") && !jTextArea9.getText().equals("")
-                    && !jTextArea10.getText().equals("") && !jTextArea11.getText().equals("")) {
-
-                // Récupération des réponses de Alice
-                ArrayList<BigInteger> aliceReponses = new ArrayList<BigInteger> ();
-                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea2.getText()));
-                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea3.getText()));
-                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea4.getText()));
-                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea5.getText()));
-                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea6.getText()));
-                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea7.getText()));
-                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea8.getText()));
-                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea9.getText()));
-                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea10.getText()));
-                aliceReponses.add(BigIntegerUtils.StringToBigInteger(jTextArea11.getText()));
-
-                Alice alice = new Alice(aliceReponses,bob.publicKey());
+            if(isNotErrorLenght) {
+                Alice alice = new Alice(aliceReponses, bob.publicKey());
 
                 //Bob donne l'encryption du numéro de question choisi
                 alice.setQuestion(bob.getI());
@@ -341,22 +353,24 @@ public class AliceWindow extends JFrame {
                 BobResultWindow bobResultWindow = new BobResultWindow(bob);
                 bobResultWindow.setVisible(true);
                 this.dispose();
-
-            } else {
-                showMessageDialog(null, "Répondez à toutes les questions !",
-                        "Attention : Réponses manquantes",
-                        JOptionPane.WARNING_MESSAGE); //JOptionPane.ERROR_MESSAGE
             }
+
+        }else{
+            showMessageDialog(null, "Répondez à toutes les questions !",
+                    "Attention : Réponses manquantes",
+                    JOptionPane.WARNING_MESSAGE);
         }
+
     }
+}
 
 
 
 
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     */
+/**
+ * This method is called from within the constructor to initialize the form.
+ */
    /* @SuppressWarnings("unchecked")
     private void initComponents() {
 
