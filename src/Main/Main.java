@@ -1,8 +1,8 @@
 package Main;
 
 
-import Encryption.Alice;
-import Encryption.Bob;
+import Encryption.solution1.Alice;
+import Encryption.solution1.Bob;
 import Utils.BigIntegerUtils;
 
 import java.math.BigInteger;
@@ -42,7 +42,6 @@ public class Main {
 
        // }
         ArrayList<BigInteger> response = new ArrayList<BigInteger>();
-        System.out.println("pouet");
         for(int i = 0; i<10;i++){
             response.add(BigIntegerUtils.generatePrimalnbBit(10));
         }

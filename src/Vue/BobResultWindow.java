@@ -1,17 +1,14 @@
 package Vue;
 
-import Encryption.Bob;
+import Encryption.solution1.Bob;
 import Utils.BigIntegerUtils;
 
 import javax.swing.*;
-import javax.swing.text.Element;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * Created by Coco on 06/02/2016.

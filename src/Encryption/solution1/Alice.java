@@ -1,4 +1,4 @@
-package Encryption;
+package Encryption.solution1;
 
 import CryptoSysteme.Paillier;
 

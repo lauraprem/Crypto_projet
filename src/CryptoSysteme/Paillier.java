@@ -78,7 +78,7 @@ public class Paillier {
         return m;
     }
 
-    public Keys getKeys() {
+    protected Keys getKeys() {
         return keys;
     }
 

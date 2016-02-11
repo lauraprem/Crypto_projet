@@ -1,8 +1,6 @@
 package Vue;
 
-import Encryption.Alice;
-import Encryption.Bob;
-import Utils.BigIntegerUtils;
+import Encryption.solution1.Bob;
 import Vue.Utils.ElementsVue;
 import Vue.Utils.Questions;
 
