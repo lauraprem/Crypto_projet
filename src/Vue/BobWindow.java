@@ -45,6 +45,8 @@ public class BobWindow extends JFrame {
         setSize(screenWidth / 2, screenHeight / 2);
         setLocation(screenWidth / 4, screenHeight / 4);
 
+        setResizable(false);
+
         jPanelBob = new JPanel();
         jComboBoxQuest = new JComboBox(Questions.getQuestions());
         jLabelConsignes = new JLabel();
@@ -121,12 +123,6 @@ public class BobWindow extends JFrame {
         BigInteger idQuestion = BigInteger.valueOf(jComboBoxQuest.getSelectedIndex()+1);
         Bob bob = new Bob();
         bob.setQuestion(idQuestion);
-
-
-        // Tests conversions
-      /*  BigInteger id = BigIntegerUtils.StringToBigInteger(idQuestion);
-        String idQuestionTest = BigIntegerUtils.parseToString(id);
-        System.out.println("Teste de conversion : "+Integer.parseInt(idQuestionTest));*/
 
         // Gestion des fenêtres
         AliceWindow aliceWindow = new AliceWindow(bob);

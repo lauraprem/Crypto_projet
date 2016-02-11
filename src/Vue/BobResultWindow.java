@@ -25,8 +25,9 @@ public class BobResultWindow extends JFrame {
     private Bob bob;
 
     public BobResultWindow(Bob bob) {
-        ArrayList<BigInteger> reponsesAlice =  bob.setReponsesDecryptees();
+
         initComponents();
+
         jLabelRecept.setText(BigIntegerUtils.parseToString(bob.setReponsesDecryptees().get(bob.getQuestion().intValue()-1)));
     }
 
@@ -45,6 +46,8 @@ public class BobResultWindow extends JFrame {
         // Centrer la fenêtre dans l'écran
         setSize(screenWidth / 2, screenHeight / 2);
         setLocation(screenWidth / 4, screenHeight / 4);
+
+        setResizable(false);
 
         jPanelBob = new JPanel();
         jLabelRecept = new JLabel();
